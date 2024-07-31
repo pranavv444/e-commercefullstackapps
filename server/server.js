@@ -13,6 +13,8 @@ app.listen(PORT,()=>{
     console.log("Server is running...");
 })
 
+//routes testing
+app.use('/user',require('./routes/useRouter'))
 
 //connecting mongob
 
