@@ -1,33 +1,47 @@
-const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config({ path: "./env.local" });
-const app = express();
+const express=require('express');
+const mongoose=require('mongoose');
+require('dotenv').config()
+const app=express();
+process.on("unhandledRejection", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Unhandled Promise Rejection`);
 
-const PORT = process.env.PORT || 5000;
+    server.close(() => {
+        process.exit(1);
+    });
+});
+const PORT=process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  res.json({ msg: "This is example" });
-});
-app.listen(PORT, () => {
-  console.log("Server is running...");
-});
+app.use(express.json())
+app.get('/',(req,res)=>{
+    res.json({msg:"This is example"});
+})
+app.listen(PORT,()=>{
+    console.log("Server is running...");
+})
 
 //routes testing
-app.use("/user", require("./routes/useRouter"));
+app.use('/user',require('./routes/useRouter'))
 
 //connecting mongob
 
-const URI = process.env.MONGODB_URL;
-mongoose
-  .connect(URI, {
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
+const URI=process.env.MONGODB_URL;
+const options={
+    useCreateIndex:true,
+    useFindAndModify:false,
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+};
+mongoose.connect(URI).then(()=>{
     console.log("MongoDB Connected");
-  })
-  .catch((err) => {
+}).catch(err=>{
     console.log(err);
-  });
+})
+
+
+
+process.on("uncaughtException", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Uncaught Exception`);
+    process.exit(1);
+});
