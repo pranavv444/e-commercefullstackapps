@@ -85,11 +85,29 @@ const userControl = {
             if(!isMatch){
                 return res.status(400).json({msg:"Incorrect"});
             }
-            res.json({msg:"Login Success"})
+
+            const accesstoken=createAccessToken({id:user._id});
+            const refreshtoken=createRefreshToken({id:user._id});
+
+            res.cookie('refreshtoken',refreshtoken,{
+                httpOnly:true,
+                path:'/user/refresh_token'
+            })
+            res.json({accesstoken});
 
         }
         catch(err){
             return res.status(500).json({msg:err.message});
+
+        }
+    },
+    logout:async(req,res)=>{
+        try{
+            res.clearCookie('refreshtoken',{path:'/user/refresh_token'});
+            return res.json({msg:"Log Out"});
+
+        }
+        catch(err){
 
         }
     }

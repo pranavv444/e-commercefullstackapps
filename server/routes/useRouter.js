@@ -5,4 +5,6 @@ const router = express.Router();
 router.post('/register', userControl.register);
 router.post('/refresh_token', userControl.refreshtoken);
 router.post('/login',userControl.login);
+router.get('/logout',userControl.logout);
+
 module.exports = router;
