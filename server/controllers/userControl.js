@@ -7,11 +7,17 @@ const userControl = {
         try {
             const { name, email, password } = req.body;
 
+            // Check if all required fields are provided
+            if (!name || !email || !password) {
+                return res.status(400).json({ msg: "Please provide all required fields" });
+            }
+
             // Check if user already exists
             const user = await Users.findOne({ email });
             if (user) {
                 return res.status(400).json({ msg: "Email Already Registered" });
             }
+
             // Validate password length
             if (password.length < 6) {
                 return res.status(400).json({ msg: "Password must be at least 6 characters" });
@@ -50,22 +56,22 @@ const userControl = {
             return res.status(500).json({ msg: err.message });
         }
     },
-    // refreshtoken: async (req, res) => {
-    //     try {
-    //         const rf_token = req.cookies.refreshtoken;
-    //         if (!rf_token) return res.status(400).json({ msg: "Please Login or Register" });
+    refreshtoken: async (req, res) => {
+        try {
+            const rf_token = req.cookies.refreshtoken;
+            if (!rf_token) return res.status(400).json({ msg: "Please Login or Register" });
 
-    //         jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-    //             if (err) return res.status(400).json({ msg: "Please Login or Register" });
+            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+                if (err) return res.status(400).json({ msg: "Please Login or Register" });
 
-    //             const accesstoken = createAccessToken({ id: user.id });
-    //             res.json({ accesstoken });
-    //         });
-    //     } catch (err) {
-    //         console.error(err); // Log error to console
-    //         return res.status(500).json({ msg: err.message });
-    //     }
-    // }
+                const accesstoken = createAccessToken({ id: user.id });
+                res.json({ user,accesstoken });
+            });
+        } catch (err) {
+            console.error(err); // Log error to console
+            return res.status(500).json({ msg: err.message });
+        }
+    }
 }
 
 const createAccessToken = (payload) => {
@@ -77,4 +83,3 @@ const createRefreshToken = (payload) => {
 }
 
 module.exports = userControl;
-

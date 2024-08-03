@@ -1,6 +1,7 @@
 const express=require('express');
 const mongoose=require('mongoose');
 require('dotenv').config()
+const cookieParser=require('cookie-parser')
 const app=express();
 process.on("unhandledRejection", (err) => {
     console.log(`Error: ${err.message}`);
@@ -13,6 +14,7 @@ process.on("unhandledRejection", (err) => {
 const PORT=process.env.PORT || 5000;
 
 app.use(express.json())
+app.use(cookieParser())
 app.get('/',(req,res)=>{
     res.json({msg:"This is example"});
 })
@@ -45,3 +47,14 @@ process.on("uncaughtException", (err) => {
     console.log(`Shutting down the server due to Uncaught Exception`);
     process.exit(1);
 });
+
+// Error handling for unhandled promise rejections
+process.on("unhandledRejection", (err) => {
+    console.log(`Error: ${err.message}`);
+    console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+    server.close(() => {
+        process.exit(1);
+    });
+});
+
+
