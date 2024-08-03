@@ -1,6 +1,7 @@
 const Users = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { use } = require('../routes/useRouter');
 
 const userControl = {
     register: async (req, res) => {
@@ -70,6 +71,26 @@ const userControl = {
         } catch (err) {
             console.error(err); // Log error to console
             return res.status(500).json({ msg: err.message });
+        }
+    },
+    login:async(req,res)=>{
+        try{
+            const {email,password}=req.body;
+
+            const user=await Users.findOne({email})
+            if(!user){
+                return res.status(400).json({msg:"User does not exist"});
+            }
+            const isMatch=await bcrypt.compare(password,user.password)
+            if(!isMatch){
+                return res.status(400).json({msg:"Incorrect"});
+            }
+            res.json({msg:"Login Success"})
+
+        }
+        catch(err){
+            return res.status(500).json({msg:err.message});
+
         }
     }
 }
