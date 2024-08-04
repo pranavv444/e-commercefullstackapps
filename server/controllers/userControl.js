@@ -1,7 +1,7 @@
 const Users = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { use } = require('../routes/useRouter');
+// const { use } = require('../routes/useRouter');
 
 const userControl = {
     register: async (req, res) => {
@@ -110,7 +110,22 @@ const userControl = {
         catch(err){
 
         }
-    }
+    },
+    getUser:async(req,res)=>{
+        try{
+            const user=await Users.findById(req.user.id).select('-password');
+            if(!user){
+                return res.status.json({msg:"User not found"});
+                
+            }
+            res.json(user)
+
+        }
+        catch(err){
+            return res.status(500).json({msg:err.message});
+
+        }
+    },
 }
 
 const createAccessToken = (payload) => {
