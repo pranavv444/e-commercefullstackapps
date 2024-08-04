@@ -24,6 +24,8 @@ app.listen(PORT,()=>{
 
 //routes testing
 app.use('/user',require('./routes/useRouter'))
+app.use('/api',require('./routes/categoryRouters'))
+
 
 //connecting mongob
 
