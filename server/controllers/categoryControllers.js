@@ -30,7 +30,32 @@ const categoryControllers={
             return res.status(500).json({msg:err.message})
 
         }
+    },
+    deleteCategory:async(req,res)=>{
+        try{
+            await Category.findByIdAndDelete(req.params.id);
+            res.json({msg:"Deleted a category"})
+
+        }
+        catch(err){
+            return res.status(500).json({msg:err.message})
+        }
+    },
+    updateCategory:async(req,res)=>{
+        try{
+            const {name}=req.body;
+            await Category.findByIdAndUpdate({_id:req.params.id},{name})
+            res.json({msg:"Updated"})
+
+        }
+        catch(err){
+            return res.status(500).json({msg:err.message})
+
+        }
     }
+
 
 }
 module.exports=categoryControllers
+
+
