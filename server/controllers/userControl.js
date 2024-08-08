@@ -38,8 +38,8 @@ const userControl = {
             await newUser.save();
 
             // Create JWT tokens
-            const accesstoken = createAccessToken({ id: newUser._id });
-            const refreshtoken = createRefreshToken({ id: newUser._id });
+            const accesstoken = createAccessToken({ id: newUser._id ,role:newUser.role});
+            const refreshtoken = createRefreshToken({ id: newUser._id ,role:newUser.role});
 
             // Set refresh token as cookie
             res.cookie('refreshtoken', refreshtoken, {
@@ -86,8 +86,8 @@ const userControl = {
                 return res.status(400).json({msg:"Incorrect"});
             }
 
-            const accesstoken=createAccessToken({id:user._id});
-            const refreshtoken=createRefreshToken({id:user._id});
+            const accesstoken=createAccessToken({id:user._id,role:user.role});
+            const refreshtoken=createRefreshToken({id:user._id,role:user.role});
 
             res.cookie('refreshtoken',refreshtoken,{
                 httpOnly:true,
