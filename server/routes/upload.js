@@ -1,9 +1,22 @@
-const router = require('express').Router();
-const cloudinary = require('cloudinary').v2;
-const auth = require('../middleware/auth');
-const authAdmin = require('../middleware/authAdmin');
+const express = require('express');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary').v2; // Assuming cloudinary is set up
+const router = express.Router();
+const auth = require('../middleware/auth')
+const authAdmin = require('../middleware/authAdmin')
 const fs = require('fs');
+const path = require('path');
 
+// Create temp directory if it doesn't exist
+const tempDir = path.join(__dirname, 'temp');
+
+if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+}
+
+// Middleware for file uploads
+router.use(fileUpload());
+// app.use(fileUpload());
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_API_KEY,
@@ -11,42 +24,37 @@ cloudinary.config({
 });
 
 router.post('/upload', auth, authAdmin, (req, res) => {
-    const file = req.file;
-    console.log('File:', file);
-    
-    // Access the original filename
-    console.log('Original Filename:', file.originalname);
-    
-    // Access the file buffer (useful for further processing or storage)
-    console.log('File Buffer:', file.buffer);
+    try {
+        if (!req.files || Object.keys(req.files).length === 0) {
 
-    res.send('File uploaded and accessed successfully.');
-    // try {
-    //     if (!req.files || Object.keys(req.files).length === 0) {
-    //         return res.status(400).send({ msg: "No files were uploaded" });
-    //     }
+            return res.status(400).send({ msg: "No files were uploaded" });
+        }
 
-    //     const file = req.files.file;
-    //     if (file.size > 1024 * 1024) {
-    //         removeTmp(file.tempFilePath);
-    //         return res.status(400).json({ msg: "Size too large" });
-    //     }
+        const file = req.files.file;
+        if (file.size > 1024 * 1024) {
+            return res.status(400).json({ msg: "Size too large" });
+        }
 
-    //     if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
-    //         removeTmp(file.tempFilePath);
-    //         return res.status(400).json({ msg: "File format is incorrect" });
-    //     }
+        if (file.mimetype !== 'image/jpeg' && file.mimetype !== 'image/png') {
+            return res.status(400).json({ msg: "File format is incorrect" });
+        }
 
-    //     cloudinary.uploader.upload(file.tempFilePath, { folder: 'test' }, (err, result) => {
-    //         if (err) throw err;
-
-    //         removeTmp(file.tempFilePath);
-
-    //         res.json({ public_id: result.public_id, url: result.secure_url });
-    //     });
-    // } catch (err) {
-    //     res.status(500).json({ msg: err.message });
-    // }
+const filePath = path.join(__dirname, 'temp', file.name);
+        file.mv(filePath, (err) => {
+            if (err) return res.status(500).send(err);
+        
+            cloudinary.uploader.upload(filePath, { folder: 'test' }, (err, result) => {
+                if (err) throw err;
+        
+                // Optionally delete the temporary file
+                fs.unlinkSync(filePath);
+        
+                res.json({ public_id: result.public_id, url: result.secure_url });
+            });
+        });
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
 });
 
 router.post('/destroy', auth, authAdmin, (req, res) => {
