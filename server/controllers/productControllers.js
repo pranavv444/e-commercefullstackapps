@@ -26,7 +26,8 @@ const productControllers={
             const newProduct=new Products({
                 product_id,title:title.toLowerCase(),price,description,content,images,category
             })
-            res.json(newProduct)
+            await newProduct.save();
+            res.json({msg:"Create a product"})
 
         }
         catch(err){
@@ -36,6 +37,8 @@ const productControllers={
     },
     deleteProduct:async(req,res)=>{
         try{
+            await Products.findByIdAndDelete(req.params.id)
+            res.json({msg:"Deleted a product"})
 
         }
         catch(err){
@@ -45,6 +48,12 @@ const productControllers={
     },
     updateProduct:async(req,res)=>{
         try{
+            const {title,price,description,content,images,category}=req.body;
+            if(!images){
+                return res.status(500).json({msg:"No image uploaded"})
+            }
+            await Products.findOneAndUpdate({_id:req.params.id},{title:title.toLowerCase(),price,description,content,images,category})
+            res.json({msg:"Updated a product"})
 
         }
         catch(err){
