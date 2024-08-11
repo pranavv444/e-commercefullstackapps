@@ -1,9 +1,57 @@
 const Products=require('../models/productModel')
+
+//filtering,sorting and pagination
+
+class APIfeatures{
+    constructor(query,queryString){
+        this.query=query;
+        this.queryString=queryString;
+
+    }
+    filtering(){
+        const queryObj={...this.queryString} //spread operator
+        console.log(queryObj)
+        const excludedFields=['page','sort','limit']
+        excludedFields.forEach(eL=>delete(queryObj[eL]));
+        console.log(queryObj)
+
+        let queryStr=JSON.stringify(queryObj);
+        queryStr=queryStr.replace(/\b(gte|gt|lt|lte|regex)\b/g,match=>'$'+match)
+        console.log({queryObj,queryStr});
+        this.query.find(JSON.parse(queryStr))
+        return this;
+        
+
+
+    }
+    sorting(){
+        if(this.queryString.sort){
+            const sortBy=this.queryString.sort.split(',').join('')
+            this.query=this.query.sort(sortBy)
+            console.log(sortBy)
+        }
+        else{
+            this.query=this.query.sort('-createdAt')
+        }
+        return this;
+
+    }
+    pagination(){
+        const page=this.queryString.page*1 || 1;
+        const limit=this.queryString.limit*1 || 9;
+        const skip=(page-1)*limit;
+        this.query=this.query.skip(skip).limit(limit)
+        return this;
+
+    }
+}
 const productControllers={
     getProducts:async(req,res)=>{
         try{
-            const products=await Products.find();
-            res.json(products)
+            console.log(req.query);
+            const features=new APIfeatures(Products.find(),req.query).filtering().sorting().pagination(); 
+            const products=await features.query;
+            res.json({result:products.length})
 
 
         }
