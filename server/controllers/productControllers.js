@@ -20,7 +20,8 @@ class APIfeatures {
       (match) => "$" + match
     );
     console.log({ queryObj, queryStr });
-    this.query.find(JSON.parse(queryStr));
+    const some=this.query.find(JSON.parse(queryStr));
+    console.log("some",some)
     return this;
   }
   sorting() {
