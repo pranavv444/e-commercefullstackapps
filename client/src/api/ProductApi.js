@@ -4,8 +4,9 @@ const  ProductApi = () => {
 
     const [products,setProducts]=useState([])
     const getproducts=async()=>{
-        const res=await axios.get('/api/products')
-        console.log(res.data.products)
+        const res=await axios.get('/api/products')//chalra hai
+        setProducts(res.data.result)//intially set karra hu
+        console.log("product api calls:", res.data.result)
     }
     useEffect(()=>{
         getproducts()

@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { GlobalState } from "../../../GlobalState";
+import ProductList from "../utils/ProductLists/ProductList";
 
 const Product = () => {
-  return (
-    <div>Product</div>
-  )
-}
+  const state = useContext(GlobalState);
 
-export default Product
+  // console.log("|state", state);
+  const pro = state.ProductApi.product ? state.ProductApi.product : [];
+  console.log("pro",pro)
+  return (
+    <div className="products">
+      {
+      pro.map(product=>{
+        return<ProductList key={product.id} product={product}/>
+      })
+    }
+    
+    </div>
+  );
+};
+
+export default Product;
