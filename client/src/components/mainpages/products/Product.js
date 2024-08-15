@@ -1,25 +1,20 @@
 import React, { useContext,useEffect,useState } from "react";
 import { GlobalState } from "../../../GlobalState";
 import ProductList from "../utils/ProductLists/ProductList";
+import { useGetProducts } from "../../../api/helpers/useGetProducts";
 import axios from "axios";
 const Product = () => {
-  const [pro,setPro]=useState([])
-  const getproducts=async()=>{
-      const res=await axios.get('/api/products')//chalra hai
-      setPro(res.data.result)//intially set karra hu
-      console.log("product api calls:", res.data.result)
-  }
-  useEffect(()=>{
-      getproducts()
-  },[])
+
+const  {data:pro,isError,isLoading:isProductLoading} =useGetProducts();
+console.log("pro in products.js",pro)
   return (
     <div className="products">
-      {
+    {isProductLoading?(<> Loading....</>):(
       pro.map(product=>{
         return<ProductList key={product._id} product={product}/>
       })
-    }
-    
+    )} 
+     
     </div>
   );
 };
