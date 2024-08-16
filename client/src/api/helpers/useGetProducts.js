@@ -20,5 +20,6 @@ export const useGetProducts = () => {
     return useQuery({
         queryKey: ['getProduct','getAllProduct'],
         queryFn: () => getAllProducts(),
+        
     })
 }

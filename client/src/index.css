@@ -26,3 +26,5 @@ button{
 }
 
 @import url("./components/headers/header.css");
+
+@import url('./components/mainpages/products/Products.css');
