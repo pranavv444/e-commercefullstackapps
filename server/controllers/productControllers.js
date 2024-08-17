@@ -9,26 +9,26 @@ class APIfeatures {
   }
   filtering() {
     const queryObj = { ...this.queryString }; //spread operator
-    console.log(queryObj);
+    // console.log(queryObj);
     const excludedFields = ["page", "sort", "limit"];
     excludedFields.forEach((eL) => delete queryObj[eL]);
-    console.log(queryObj);
+    // console.log(queryObj);
 
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(
       /\b(gte|gt|lt|lte|regex)\b/g,
       (match) => "$" + match
     );
-    console.log({ queryObj, queryStr });
+    // console.log({ queryObj, queryStr });
     const some=this.query.find(JSON.parse(queryStr));
-    console.log("some",some)
+    // console.log("some",some)
     return this;
   }
   sorting() {
     if (this.queryString.sort) {
       const sortBy = this.queryString.sort.split(",").join("");
       this.query = this.query.sort(sortBy);
-      console.log(sortBy);
+      // console.log(sortBy);
     } else {
       this.query = this.query.sort("-createdAt");
     }
@@ -45,7 +45,7 @@ class APIfeatures {
 const productControllers = {
   getProducts: async (req, res) => {
     try {
-      console.log(req.query);
+      // console.log(req.query);
       const features = new APIfeatures(Products.find(), req.query)
         .filtering()
         .sorting()
@@ -54,6 +54,24 @@ const productControllers = {
       res.json({ result: products });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
+    }
+  },
+
+  getById: async(req,res)=>{ // mongoID
+    try {
+      const {id}=req.params;
+      const product= await Products.findOne({
+        _id:id
+      })
+  
+      if (!product) {
+        return res.status(400).json({ msg: "porduct not found" });
+      }
+    
+      return res.status(200).json({product});
+
+    } catch (error) {
+      return res.status(500).json({ msg: error.message });
     }
   },
   createProducts: async (req, res) => {
@@ -70,7 +88,7 @@ const productControllers = {
       if (!images) {
         return res.status(400).json({ msg: "No Image Upload" });
       }
-      const product = await Products.findOne({ product_id });
+      const product = await Products.findOne({ product_id }); //p06 wala hai dhyan dena
       if (product) {
         return res.status(400).json({ msg: "This product already exists" });
       }

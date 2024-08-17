@@ -5,6 +5,7 @@ router.route('/products')
 .post(productControllers.createProducts)
 
 router.route ('/products/:id')
+.get(productControllers.getById)
 .delete(productControllers.deleteProduct)
 .put(productControllers.updateProduct)
 
