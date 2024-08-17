@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import ProductApi from "./api/ProductApi";
+import axios from "axios";
 export const GlobalState=createContext()
 export const DataProvider=({children})=>{
 
@@ -9,6 +10,15 @@ export const DataProvider=({children})=>{
         ProductApi:ProductApi() //use pehle ho jata hai
         
     }
+    const refreshToken=async ()=>{
+        const res=await axios.get('/user/refresh_token')
+        setToken(res.data.accesstoken)
+    }
+
+    useEffect(()=>{
+        const firstLogin=localStorage.getItem('firstlogin')
+        if(firstLogin) refreshToken()
+    },[])
 
 
   

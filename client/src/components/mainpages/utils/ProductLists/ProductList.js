@@ -28,7 +28,7 @@ const handleRouter=()=>{
     <div className="row_btn">
       <Link id="btn_buy" to={`#!`}>BUY</Link>
       {/* <Link id="btn_view" to={`detail/${product._id}`} onClick={handleRouter}>View</Link>  */}
-<div className="" onClick={handleRouter}> 
+<div className="btn_view" onClick={handleRouter}> 
 view
 </div>
       {/* product.id ko hta denge , onclick banayebge */}

@@ -1,63 +1,125 @@
-.product_card{
+/* Product Card Container */
+.product_card {
     max-width: 300px;
     height: 500px;
     overflow: hidden;
     padding: 15px;
-    box-shadow: 0 0 17px #ddd;
-    margin: 10px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    margin: 10px;
     position: relative;
+    background-color: #fff; /* White background for contrast */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
 }
 
-.product_card img{
+/* Shifted the row_btn slightly upward */
+.row_btn {
+    width: 100%;
+    margin-top: 5px; /* Reduced margin to move buttons up */
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Added gap between buttons */
+}
+
+/* Other styles remain the same */
+
+.product_card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Product Image Styling */
+.product_card img {
     width: 100%;
     height: 300px;
     display: block;
     object-fit: cover;
+    border-radius: 8px; /* Rounded corners on the image */
+    transition: transform 0.3s ease; /* Smooth image hover effect */
 }
 
-.product_box h2{
+.product_card img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Product Title Styling */
+.product_box h2 {
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     text-transform: capitalize;
     cursor: pointer;
+    font-size: 1.2rem; /* Slightly larger font size */
+    color: #333; /* Darker color for better readability */
+    margin: 10px 0; /* Spacing around title */
+    transition: color 0.3s ease;
 }
 
-.product_card span{
-    color: crimson;
+.product_box h2:hover {
+    color: #ff6b6b; /* Accent color on hover */
 }
 
-.product_box p{
+/* Price Styling */
+.product_card span {
+    color: #e63946; /* Brighter red for price */
+    font-weight: bold; /* Bold for emphasis */
+    font-size: 1.1rem;
+}
+
+/* Product Description Styling */
+.product_box p {
     width: 100%;
     height: 70px;
     overflow: hidden;
-    color: #323232;
+    color: #666; /* Softer gray for description */
+    margin: 10px 0; /* Spacing below description */
+    font-size: 0.95rem;
 }
 
-.row_btn{
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.row_btn a{
+/* Button Styling */
+.row_btn a {
     width: 50%;
     text-align: center;
     text-transform: uppercase;
     color: white;
-    font-weight: 60;
-    letter-spacing: 2px;
-    padding: 6px;
+    font-weight: 600; /* Bolder font weight */
+    letter-spacing: 1.5px; /* Slightly tighter letter spacing */
+    padding: 8px; /* More padding for comfort */
+    border-radius: 5px; /* Rounded button corners */
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
-#btn_buy{
-    background: #555;
+/* Buy Button */
+#btn_buy {
+    background: #555; /* Neutral dark background */
     margin-right: 5px;
 }
 
-#btn_view{
-    background: #323232;
+#btn_buy:hover {
+    background: #444; /* Darker on hover */
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* View Button */
+#btn_view {
+    background: #323232; /* Darker button color */
     margin-left: 5px;
+}
+
+#btn_view:hover {
+    background: #444; /* Darker on hover */
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product_card {
+        max-width: 100%; /* Full width on smaller screens */
+        margin: 10px auto; /* Center cards */
+    }
+
+    .row_btn a {
+        padding: 10px; /* Increased padding for easier tap on mobile */
+    }
 }

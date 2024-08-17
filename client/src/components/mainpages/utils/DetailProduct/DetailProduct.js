@@ -1,43 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams,useLocation } from 'react-router-dom'
-import { GlobalState } from '../../../../GlobalState';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const DetailProduct = () => {
-  const location =useLocation();
-const {title,_id,images}=location.state.product;
+  const location = useLocation();
+  const { title, _id, images, price, description, content, sold } = location.state.product;
 
-
-  // console.log("loc",location)
-  // console.log("title",title)
   return (
-    <div>DetailProduct</div>
-  )
-}
+    <div className='detail'>
+      <img src={images.url} alt={title} />
+      <div className='box-detail'>
+        <div className='row'>
+          <h2>{title}</h2>
+          {/* <h6>{_id}</h6> */}
+        </div>
+        <span>${price}</span>
+        <p>{description}</p>
+        <p>{content}</p>
+        <p>Sold: {sold}</p>
+        <Link to='/cart' className='cart'>BUY NOW</Link>
+      </div>
+    </div>
+  );
+};
 
-export default DetailProduct
-
-// import React, { useContext, useEffect, useState } from 'react'
-// import { useParams } from 'react-router-dom'
-// import { GlobalState } from '../../../../GlobalState';
-
-// const DetailProduct = () => {
-//     const params=useParams();
-//     const state=useContext(GlobalState);
-//     const [products]=state.productsApi.products;
-//     const [detailProduct,setDetailProduct]=useState([]);
-
-//     useEffect(()=>{
-//         if(params){
-//             products.forEach(product=>{
-//                 if(product._id===params.id)setDetailProduct(product)
-//             })
-//         }
-//     },[params,products])
-
-//     console.log(detailProduct);
-//   return (
-//     <div>DetailProduct</div>
-//   )
-// }
-
-// export default DetailProduct
+export default DetailProduct;

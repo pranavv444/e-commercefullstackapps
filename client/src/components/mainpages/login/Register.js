@@ -1,9 +1,64 @@
-import React from 'react'
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 const Register = () => {
-  return (
-    <div>Register</div>
-  )
-}
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-export default Register
+  const onChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  const registerSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("/user/register", { ...user });
+      localStorage.setItem("firstRegister", true);
+
+      window.location.href = "/";
+    } catch (err) {
+      alert(err.response.data.msg);
+    }
+  };
+  return (
+    <div className="register-page">
+      <form onSubmit={registerSubmit}>
+        <input
+          type="name"
+          name="name"
+          required
+          placeholder="Name"
+          value={user.name}
+          onChange={onChangeInput}
+        ></input>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="Email"
+          value={user.email}
+          onChange={onChangeInput}
+        ></input>
+        <input
+          type="password"
+          name="password"
+          required
+          placeholder="Password"
+          value={user.password}
+          onChange={onChangeInput}
+        ></input>
+
+        <div className="row">
+          <button type="submit">Regsiter</button>
+          <Link to="/login">Login</Link>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default Register;

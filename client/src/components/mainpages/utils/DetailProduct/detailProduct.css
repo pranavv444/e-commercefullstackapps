@@ -1,0 +1,108 @@
+/* General Container Styling */
+.detail {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center content */
+    flex-wrap: wrap;
+    padding: 30px; /* Reduced padding for a tighter layout */
+    font-size: 1.2rem; /* Adjusted font size for readability */
+    background-color: #f4f4f9; /* Soft background color */
+}
+
+/* Image Styling */
+.detail img {
+    max-width: 60%; /* Reduced max-width for smaller image */
+    width: 100%;
+    margin: 20px 0;
+    height: auto; /* Removed fixed height for responsive scaling */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+}
+
+/* Product Details Box Styling */
+.box-detail {
+    max-width: 600px; /* Increased max-width for larger box */
+    width: 100%;
+    margin: 20px;
+    padding: 25px; /* Increased padding */
+    background-color: #fff; /* Clean white background */
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-detail:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+}
+
+/* Row Styling */
+.box-detail .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Added spacing for clarity */
+}
+
+/* Product Title Styling */
+.box-detail h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold; /* Proper font-weight */
+    font-size: 2rem; /* Consistent font-size */
+    color: #333;
+    margin-bottom: 15px; /* Spacing below heading */
+    position: relative;
+}
+
+.box-detail h2:after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: #ff6b6b; /* Accent underline */
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+}
+
+/* Button Styling */
+.box-detail .cart {
+    background: linear-gradient(45deg, #333, #555); /* Modern gradient */
+    color: #fff;
+    margin-top: 15px;
+    padding: 12px 30px; /* Larger padding for comfort */
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 600; /* Bolder text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box-detail .cart:hover {
+    background: linear-gradient(45deg, #555, #777); /* Slight color change on hover */
+    cursor: pointer;
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .detail {
+        padding: 20px; /* Adjusted padding for smaller screens */
+    }
+
+    .box-detail {
+        max-width: 100%; /* Full width on smaller screens */
+        margin: 10px;
+    }
+
+    .box-detail h2 {
+        font-size: 1.5rem; /* Smaller font size for small screens */
+    }
+
+    .box-detail .cart {
+        padding: 10px 20px; /* Adjusted padding */
+    }
+}
