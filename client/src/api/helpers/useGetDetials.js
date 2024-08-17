@@ -1,23 +1,25 @@
-// import { useMutation } from '@tanstack/react-query';
-// import { createProject } from '../../utils/helpers/ProjectApi';
-// import { queryClient } from '../../main';
+import {useQuery} from '@tanstack/react-query'
+import axios from 'axios'
 
-// export const useCreateProject = () => {
-//     return useMutation({
-//         mutationKey: ['createProject'],
-//         mutationFn: createProject,
-//         onSuccess: () => {
-//             queryClient.invalidateQueries({ queryKey: ['projects-list'] }); // Invalidate the query to refresh the projects list
-//         },
-//         onError: (error) => {
-//             // console.error('Error creating project:', error);
-//         },
-//         onSettled: (data, error) => {
-//             if (error) {
-//                 // console.error('Error creating project:', error);
-//             } else {
-//                 // console.log('Project created successfully:', data);
-//             }
-//         },
-//     });
-// };
+const url='/api/products/';
+export const useGetDetails = (id) => {
+    const getProductById=async(id)=>{
+        try {
+            const res=await axios.get(url+id)//chalra hai  
+              console.log("product api calls:", res)
+              
+
+        return res.data.result;
+        } catch (error) {
+            throw error;
+        }
+    
+    
+    
+    }
+    return useQuery({
+        queryKey: ['getProduct','getAllProduct'],
+        queryFn: () => getProductById(id),
+        
+    })
+}
