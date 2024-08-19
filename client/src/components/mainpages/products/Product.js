@@ -6,7 +6,7 @@ import axios from "axios";
 const Product = () => {
 
 const  {data:pro,isError,isLoading:isProductLoading} =useGetProducts();
-console.log("pro in products.js",pro)
+
   return (
     <div className="products">
     {isProductLoading?(<> Loading....</>):(

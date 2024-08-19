@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault()
     try{
       await axios.post('/user/login',{...user})
-      localStorage.setItem('firstLogin',true)
+      localStorage.setItem('firstlogin',true)
 
       window.location.href="/"
 

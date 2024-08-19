@@ -6,7 +6,7 @@ export const useGetDetails = (id) => {
     const getProductById=async(id)=>{
         try {
             const res=await axios.get(url+id)//chalra hai  
-              console.log("product api calls:", res)
+            //   console.log("product api calls:", res)
               
 
         return res.data.result;
