@@ -11,7 +11,7 @@ export const DataProvider = ({ children }) => {
   const [token, setToken] = useState(false);
   const state = {
     token: [token, setToken],
-    ProductApi: ProductApi(), //use pehle ho jata hai
+    ProductApi: ProductApi(), //use pehle ho jata hai products nahi milenge hook banaya tha
     userAPI: useUserAPI(token),
   };
   const refreshToken = async () => {
