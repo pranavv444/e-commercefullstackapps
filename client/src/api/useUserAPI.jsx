@@ -15,6 +15,7 @@ const useUserAPI = (token) => {
         //   console.log("res in useuserapi:", res);
           setLogged(true);
           res.data.role === 1 ? setAdmin(true) : setAdmin(false);
+          console.log(res)
         } catch (err) {
           alert(err.response.data.msg);
         }
