@@ -1,7 +1,7 @@
 /* Product Card Container */
 .product_card {
     max-width: 300px;
-    height: 500px;
+    /* height: 500px; */
     overflow: hidden;
     padding: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
@@ -78,13 +78,14 @@
 }
 
 /* Button Styling */
-.row_btn a {
-    width: 50%;
+.row_btn a,
+.row_btn .btn_view {
+    width: 48%; /* Adjusted width for better spacing */
     text-align: center;
     text-transform: uppercase;
     color: white;
-    font-weight: 600; /* Bolder font weight */
-    letter-spacing: 1.5px; /* Slightly tighter letter spacing */
+    font-weight: 600;
+    letter-spacing: 1.5px;
     padding: 8px; /* More padding for comfort */
     border-radius: 5px; /* Rounded button corners */
     transition: background 0.3s ease, transform 0.3s ease; /* Smooth transitions */
@@ -93,7 +94,6 @@
 /* Buy Button */
 #btn_buy {
     background: #555; /* Neutral dark background */
-    margin-right: 5px;
 }
 
 #btn_buy:hover {
@@ -102,12 +102,11 @@
 }
 
 /* View Button */
-#btn_view {
+.btn_view {
     background: #323232; /* Darker button color */
-    margin-left: 5px;
 }
 
-#btn_view:hover {
+.btn_view:hover {
     background: #444; /* Darker on hover */
     transform: scale(1.05); /* Slight scale on hover */
 }
@@ -119,7 +118,8 @@
         margin: 10px auto; /* Center cards */
     }
 
-    .row_btn a {
+    .row_btn a,
+    .row_btn .btn_view {
         padding: 10px; /* Increased padding for easier tap on mobile */
     }
 }
