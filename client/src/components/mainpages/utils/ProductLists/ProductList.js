@@ -67,10 +67,14 @@
 // };
 
 // export default ProductList;
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { GlobalState } from "../../../../GlobalState";
+import BtnRender from "./BtnRender";
+// import { useGetProducts } from "../../../../api/helpers/useGetProducts"; // Updated path
 
-const ProductList = ({ product, isAdmin }) => {
+const ProductList = ({ product,isAdmin }) => {
+  
   const navigate = useNavigate();
   const handleRouter = () => {
     const id = product._id;
@@ -79,28 +83,20 @@ const ProductList = ({ product, isAdmin }) => {
 
   return (
     <div className="product_card">
-    <div>
-          {isAdmin && (
-            <form action="">
-              <input type="checkbox" checked={product.checked} readOnly />
-            </form>
-          )}
-        </div>
+      <div>
+        {isAdmin && (
+          <form action="">
+            <input type="checkbox" checked={product.checked} readOnly />
+          </form>
+        )}
+      </div>
       <img src={product.images.url} alt=" " />
       <div className="product_box">
         <h2 title={product.title}>{product.title}</h2>
         <span>${product.price}</span>
         <p>${product.description}</p>
       </div>
-      <div className="row_btn">
-        <Link id="btn_buy" to={`#!`}>
-          BUY
-        </Link>
-        <button className="btn_view" onClick={handleRouter}>
-          view
-        </button>
-        
-      </div>
+      <BtnRender product={product}/>
     </div>
   );
 };

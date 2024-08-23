@@ -11,6 +11,7 @@ const Header = () => {
   const isLogged = state.userAPI.isLogged;
   const isAdmin = state.userAPI.isAdmin;
   const { setAdmin, setLogged } = state.userAPI;
+  const cart=state.userAPI.cart;
 
   const logoutUser = async () => {
     await axios.get("/user/logout");
@@ -77,7 +78,7 @@ const Header = () => {
       </ul>
       {!isAdmin && (
         <div className="cart-icon">
-          <span>0</span>
+          <span>{cart.length}</span>
           <Link to="/cart">
             <FaCartPlus size={25} />
           </Link>
