@@ -15,7 +15,7 @@ const Header = () => {
 
   const logoutUser = async () => {
     await axios.get("/user/logout");
-    console.log("user logged out");
+    // console.log("user logged out");
     localStorage.clear();
     setAdmin(false);
     setLogged(false);
@@ -49,7 +49,7 @@ const Header = () => {
     );
   };
 
-  console.log("state in header.js", state);
+  // console.log("state in header.js", state);
   return (
     <header>
       <div className="menu">

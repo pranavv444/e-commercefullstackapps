@@ -6,8 +6,8 @@ export const useGetProducts = () => {
     const getAllProducts=async()=>{
         try {
             const res=await axios.get(url)//chalra hai  
-              console.log("product api calls:", res.data.result)
-              console.log("base+url",url)
+            //   console.log("product api calls:", res.data.result)
+            //   console.log("base+url",url)
 
         return res.data.result;
         } catch (error) {

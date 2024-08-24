@@ -10,7 +10,7 @@ const BtnRender = ({ product }) => {
 
   const handleRouter = () => {
     // Define the logic for handleRouter here
-    console.log("Router handling logic");
+    // console.log("Router handling logic");
   };
 
   return (
