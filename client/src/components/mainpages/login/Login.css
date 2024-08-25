@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-page {
+    width: 100%;
+    max-width: 300px; /* Adjusted to match product card width */
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-page .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-page button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.login-page button:hover {
+    background: #0056b3;
+}
+
+.login-page a {
+    color: #28a745;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.login-page a:hover {
+    color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-page {
+        padding: 15px;
+    }
+
+    .login-page input {
+        font-size: 0.9rem;
+    }
+
+    .login-page button {
+        padding: 8px 16px;
+    }
+}

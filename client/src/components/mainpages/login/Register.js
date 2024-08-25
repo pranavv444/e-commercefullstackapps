@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+// import "./Register.css"; // Import the CSS file
+
 const Register = () => {
   const [user, setUser] = useState({
     name: "",
@@ -24,17 +26,18 @@ const Register = () => {
       alert(err.response.data.msg);
     }
   };
+
   return (
     <div className="register-page">
       <form onSubmit={registerSubmit}>
         <input
-          type="name"
+          type="text"
           name="name"
           required
           placeholder="Name"
           value={user.name}
           onChange={onChangeInput}
-        ></input>
+        />
         <input
           type="email"
           name="email"
@@ -42,7 +45,7 @@ const Register = () => {
           placeholder="Email"
           value={user.email}
           onChange={onChangeInput}
-        ></input>
+        />
         <input
           type="password"
           name="password"
@@ -50,10 +53,9 @@ const Register = () => {
           placeholder="Password"
           value={user.password}
           onChange={onChangeInput}
-        ></input>
-
+        />
         <div className="row">
-          <button type="submit">Regsiter</button>
+          <button type="submit">Register</button>
           <Link to="/login">Login</Link>
         </div>
       </form>
