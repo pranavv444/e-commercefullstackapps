@@ -1,16 +1,17 @@
 import React from 'react';
 import { GlobalState } from "../../../../GlobalState";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
 const BtnRender = ({ product }) => {
   const state = useContext(GlobalState);
   const isAdmin = state.userAPI.isAdmin;
   const addCart = state.userAPI.addCart;
+  const navigate = useNavigate();
 
   const handleRouter = () => {
-    // Define the logic for handleRouter here
-    // console.log("Router handling logic");
+    const id = product._id;
+    navigate(`/detail/${id}`, { state: { product } });
   };
 
   return (
