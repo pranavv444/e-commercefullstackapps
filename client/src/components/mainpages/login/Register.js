@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import "./Register.css"; // Import the CSS file
+import "./Register.css"; // Import the CSS file
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -28,6 +28,11 @@ const Register = () => {
   };
 
   return (
+    <>
+
+  <div className="container-90 center m-top" >
+
+
     <div className="register-page">
       <form onSubmit={registerSubmit}>
         <input
@@ -60,6 +65,8 @@ const Register = () => {
         </div>
       </form>
     </div>
+    </div>
+    </>
   );
 };
 

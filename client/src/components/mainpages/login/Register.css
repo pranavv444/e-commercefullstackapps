@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -7,71 +7,76 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+} */
 
 .register-page {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
 }
-
+.h-full{
+    height: 100%;
+}
+.m-top{
+    margin-top: 3rem;
+}
 .register-page form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .register-page input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .register-page .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .register-page button {
-    padding: 10px 20px;
-    background: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
 .register-page button:hover {
-    background: #218838;
+  background: #218838;
 }
 
 .register-page a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .register-page a:hover {
-    color: #0056b3;
+  color: #0056b3;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
-    .register-page {
-        padding: 15px;
-    }
+  .register-page {
+    padding: 15px;
+  }
 
-    .register-page input {
-        font-size: 0.9rem;
-    }
+  .register-page input {
+    font-size: 0.9rem;
+  }
 
-    .register-page button {
-        padding: 8px 16px;
-    }
+  .register-page button {
+    padding: 8px 16px;
+  }
 }

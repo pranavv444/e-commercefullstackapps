@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import './Login.css' // Import the CSS file
+import './Login.css' // Import the CSS file
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -26,7 +26,11 @@ const Login = () => {
     }
   };
 
-  return (
+  return ( 
+    <>
+  <div className="container-90 center m-top">
+
+  
     <div className='login-page'>
       <form onSubmit={loginSubmit}>
         <input
@@ -51,6 +55,8 @@ const Login = () => {
         </div>
       </form>
     </div>
+    </div>
+    </>
   );
 };
 

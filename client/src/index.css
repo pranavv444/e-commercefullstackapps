@@ -1,65 +1,83 @@
 /* Global Styles */
 * {
-    padding: 0;
-    box-sizing: border-box;
-    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean, modern font */
-    background-color: #f7f7f7; /* Light, neutral background */
-    color: #333; /* Standard text color for readability */
-    line-height: 1.6; /* Improved text readability */
+  font-family: "Helvetica Neue", Arial, sans-serif; /* Clean, modern font */
+  background-color: #f7f7f7; /* Light, neutral background */
+  color: #333; /* Standard text color for readability */
+  line-height: 1.6; /* Improved text readability */
 }
 
+.container-90 {
+  width: 90%;
+  margin: auto;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-80 {
+  width: 80%;
+  margin: auto;
+}
+.container-85 {
+  width: 85%;
+  margin: auto;
+}
 a {
-    text-decoration: none;
-    color: inherit; /* Inherit color to avoid default blue */
-    transition: color 0.3s ease; /* Smooth transition on hover */
+  text-decoration: none;
+  color: inherit; /* Inherit color to avoid default blue */
+  transition: color 0.3s ease; /* Smooth transition on hover */
 }
 
 a:hover {
-    color: #ff6b6b; 
+  color: #ff6b6b;
 }
 
-ul, li {
-    list-style: none;
+ul,
+li {
+  list-style: none;
 }
 
 button {
-    border: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-    font-family: inherit; 
-    transition: transform 0.2s ease; 
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
-    transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 /* App Container */
 .App {
-    max-width: 1400px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 0 20px;
-    background-color: #fff; 
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
-    border-radius: 10px; 
+  max-width: 1400px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 /* Import Component Styles */
 @import url("./components/headers/header.css");
-@import url('./components/mainpages/products/Products.css');
-@import url('./components/mainpages/utils/DetailProduct/detailProduct.css');
+@import url("./components/mainpages/products/Products.css");
+@import url("./components/mainpages/utils/DetailProduct/detailProduct.css");
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .App {
-        padding: 0 10px;
-        box-shadow: none; 
-        border-radius: 0; 
-    }
+  .App {
+    padding: 0 10px;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
