@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+
+"start": "cross-env HTTPS=true react-scripts start"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +22,8 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.2",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

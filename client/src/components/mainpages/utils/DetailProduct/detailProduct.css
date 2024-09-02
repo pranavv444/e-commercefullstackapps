@@ -1,58 +1,53 @@
-/* General Container Styling */
 .detail {
     width: 100%;
     display: flex;
-    justify-content: center; /* Center content */
-    flex-wrap: wrap;
-    padding: 30px; /* Reduced padding for a tighter layout */
-    font-size: 1.2rem; /* Adjusted font size for readability */
-    background-color: #f4f4f9; /* Soft background color */
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    font-size: 1.2rem;
+    background-color: #f4f4f9;
 }
 
-/* Image Styling */
 .detail img {
-    max-width: 60%; /* Reduced max-width for smaller image */
+    max-width: 60%;
     width: 100%;
     margin: 20px 0;
-    height: auto; /* Removed fixed height for responsive scaling */
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Product Details Box Styling */
 .box-detail {
-    max-width: 600px; /* Increased max-width for larger box */
+    max-width: 800px;
     width: 100%;
     margin: 20px;
-    padding: 25px; /* Increased padding */
-    background-color: #fff; /* Clean white background */
+    padding: 25px;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .box-detail:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Row Styling */
 .box-detail .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px; /* Added spacing for clarity */
+    margin-bottom: 20px;
 }
 
-/* Product Title Styling */
 .box-detail h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: bold; /* Proper font-weight */
-    font-size: 2rem; /* Consistent font-size */
+    font-weight: bold;
+    font-size: 2rem;
     color: #333;
-    margin-bottom: 15px; /* Spacing below heading */
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -60,49 +55,94 @@
     content: '';
     width: 50px;
     height: 3px;
-    background-color: #ff6b6b; /* Accent underline */
+    background-color: #ff6b6b;
     position: absolute;
     left: 0;
     bottom: -10px;
 }
 
-/* Button Styling */
+.price {
+    font-size: 24px;
+    color: #b12704;
+    margin: 10px 0;
+}
+
+.description, .content, .sold {
+    margin: 10px 0;
+}
+
 .box-detail .cart {
-    background: linear-gradient(45deg, #333, #555); /* Modern gradient */
+    background: linear-gradient(45deg, #333, #555);
     color: #fff;
     margin-top: 15px;
-    padding: 12px 30px; /* Larger padding for comfort */
+    padding: 12px 30px;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 5px;
     transition: background 0.3s ease, transform 0.3s ease;
-    font-weight: 600; /* Bolder text */
+    font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .box-detail .cart:hover {
-    background: linear-gradient(45deg, #555, #777); /* Slight color change on hover */
+    background: linear-gradient(45deg, #555, #777);
     cursor: pointer;
-    transform: scale(1.05); /* Slight enlargement on hover */
+    transform: scale(1.05);
 }
 
-/* Responsive Design */
+.reviews {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reviews h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.review {
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.review h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.review p {
+    margin: 5px 0;
+    color: #666;
+}
+
 @media (max-width: 768px) {
     .detail {
-        padding: 20px; /* Adjusted padding for smaller screens */
+        padding: 20px;
     }
 
     .box-detail {
-        max-width: 100%; /* Full width on smaller screens */
+        max-width: 100%;
         margin: 10px;
     }
 
     .box-detail h2 {
-        font-size: 1.5rem; /* Smaller font size for small screens */
+        font-size: 1.5rem;
     }
 
     .box-detail .cart {
-        padding: 10px 20px; /* Adjusted padding */
+        padding: 10px 20px;
+    }
+
+    .reviews {
+        max-width: 100%;
+        margin: 10px;
     }
 }
