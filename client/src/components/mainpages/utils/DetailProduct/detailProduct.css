@@ -1,47 +1,37 @@
 .detail {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    font-size: 1.2rem;
     background-color: #f4f4f9;
+    font-family: Arial, sans-serif;
 }
 
-.detail img {
-    max-width: 60%;
-    width: 100%;
-    margin: 20px 0;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.box-detail {
-    max-width: 800px;
-    width: 100%;
-    margin: 20px;
-    padding: 25px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.box-detail:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.box-detail .row {
+.product-images {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.box-detail h2 {
+.product-images .main-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+    max-width: 800px;
+    width: 100%;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.product-info h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: bold;
@@ -51,7 +41,7 @@
     position: relative;
 }
 
-.box-detail h2:after {
+.product-info h2:after {
     content: '';
     width: 50px;
     height: 3px;
@@ -71,7 +61,7 @@
     margin: 10px 0;
 }
 
-.box-detail .cart {
+.product-info .cart {
     background: linear-gradient(45deg, #333, #555);
     color: #fff;
     margin-top: 15px;
@@ -85,7 +75,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.box-detail .cart:hover {
+.product-info .cart:hover {
     background: linear-gradient(45deg, #555, #777);
     cursor: pointer;
     transform: scale(1.05);
@@ -94,7 +84,6 @@
 .reviews {
     width: 100%;
     max-width: 800px;
-    margin-top: 40px;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -128,16 +117,16 @@
         padding: 20px;
     }
 
-    .box-detail {
+    .product-info {
         max-width: 100%;
         margin: 10px;
     }
 
-    .box-detail h2 {
+    .product-info h2 {
         font-size: 1.5rem;
     }
 
-    .box-detail .cart {
+    .product-info .cart {
         padding: 10px 20px;
     }
 

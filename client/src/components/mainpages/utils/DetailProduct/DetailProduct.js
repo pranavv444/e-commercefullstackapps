@@ -20,12 +20,12 @@ const DetailProduct = () => {
 
   return (
     <div className='detail'>
-      <img src={images.url} alt={title} className='product-image' />
-      <div className='box-detail'>
-        <div className='row'>
-          <h2>{title}</h2>
-          {/* <h6>{_id}</h6> */}
-        </div>
+      <div className='product-images'>
+        <img src={images.url} alt={title} className='main-image' />
+        {/* Add more images if available */}
+      </div>
+      <div className='product-info'>
+        <h2>{title}</h2>
         <span className='price'>${price}</span>
         <p className='description'>{description}</p>
         <p className='content'>{content}</p>
